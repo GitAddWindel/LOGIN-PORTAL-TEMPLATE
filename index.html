@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMS - LOGIN PORTAL</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .card {
+            width: 400px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .card-header {
+            text-align: center;
+        }
+
+        .card-header img {
+            width: 100px;
+        }
+
+        .card-title h2, .card-title h4 {
+            text-align: center;
+        }
+
+        .input-group-text {
+            background-color: #fff;
+        }
+
+        .password-container {
+            margin-top: 10px;
+            cursor: pointer;
+        }
+
+        .password-container i {
+            margin-right: 5px;
+        }
+
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .form-control:valid ~ .check-icon {
+            display: block;
+        }
+
+        .check-icon {
+            display: none;
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: green;
+        }
+
+        /* Button with line animation on hover */
+        .btn-success {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-success::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background-color: #fff;
+            transition: all 0.3s ease;
+        }
+
+        .btn-success:hover::before {
+            width: 100%;
+            left: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+        <div class="card-header bg-light">
+            <img src="assets/homepage-logo/logo.png" alt="homepage-logo">
+        </div>
+        <div class="card-title">
+            <h2>Barangay Management System</h2>
+            <h4>Login Portal</h4>
+        </div>
+        <div class="card-body">
+            <form id="adminLoginForm">
+                <!-- Username Input -->
+                <div class="input-group mb-3 position-relative">
+                    <span class="input-group-text"><i class="bi bi-person"></i></span>
+                    <input type="text" class="form-control" placeholder="Username" required>
+                    <i class="bi bi-check-lg check-icon"></i>
+                </div>
+                <!-- Password Input -->
+                <div class="input-group mb-3 position-relative">
+                    <span class="input-group-text"><i class="bi bi-lock"></i></span>
+                    <input type="password" class="form-control" placeholder="Password" required>
+                    <i class="bi bi-check-lg check-icon"></i>
+                </div>
+                <!-- Show Password -->
+                <div class="password-container">
+                    <i class="bi bi-eye"></i> Show Password
+                </div>
+                <!-- Submit Button with Animation -->
+                <div class="button-container">
+                    <button class="btn btn-success" id="adminSubmitBtn" type="submit">Log In</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS and Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js"></script>
+
+    <script>
+        // Show/Hide Password
+        const passwordInput = document.querySelector('input[type="password"]');
+        const togglePassword = document.querySelector('.password-container i');
+
+        togglePassword.addEventListener('click', function () {
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                this.classList.replace('bi-eye', 'bi-eye-slash');
+            } else {
+                passwordInput.type = "password";
+                this.classList.replace('bi-eye-slash', 'bi-eye');
+            }
+        });
+
+        // Show check icon when input is filled
+        const inputs = document.querySelectorAll('input');
+        inputs.forEach(input => {
+            input.addEventListener('input', function () {
+                if (this.value) {
+                    this.classList.add('is-valid');
+                } else {
+                    this.classList.remove('is-valid');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
